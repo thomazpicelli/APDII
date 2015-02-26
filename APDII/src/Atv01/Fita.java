@@ -1,22 +1,27 @@
 package Atv01;
 
+/**
+ *
+ * @author thomazpicelli
+ */
 public class Fita {
     public enum Tipo {
-        normal, lancamento, infantil
+        Normal, Lancamento, Infantil
     };
     private String título;
-    private Tipo códigoDePreço;
-    public Fita(String título, Tipo códigoDePreço) {
+    private Tipo tipo;
+    
+    public Fita(String título, Tipo tipo) {
         this.título = título;
-        this.códigoDePreço = códigoDePreço;
+        this.tipo = tipo;
     }
     public String getTítulo() {
-        return título;
+        return this.título;
     }
-    public Tipo getCódigoDePreço() {
-        return códigoDePreço;
+    public Tipo getTipo() {
+        return tipo;
     }
-    public void setCódigoDePreço(Tipo códigoDePreço) {
-        this.códigoDePreço = códigoDePreço;
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
     }
 }

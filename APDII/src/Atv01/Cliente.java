@@ -3,9 +3,15 @@ package Atv01;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ *
+ * @author thomazpicelli
+ */
 public class Cliente {
+    
     private String nome;
     private Collection<Aluguel> fitasAlugadas = new ArrayList<Aluguel>();
+    
     public Cliente(String nome) {
         this.nome = nome;
     }
@@ -15,30 +21,30 @@ public class Cliente {
     public void adicionaAluguel(Aluguel aluguel) {
         fitasAlugadas.add(aluguel);
     }
-    public String extrato() {
+    
+    public String gerarExtrato() {
         final String fimDeLinha = System.getProperty("line.separator");
         double valorTotal = 0.0;
         int pontosDeAlugadorFrequente = 0;
         String resultado = "Registro de Alugueis de " + getNome() + fimDeLinha;
-        for (Aluguel f : fitasAlugadas) {
+        for (Aluguel aluguel: fitasAlugadas) {
             double valorCorrente = 0.0;
-            Aluguel cada = f;
             // determina valores para cada linha
             // switch com enum
-            switch (cada.getFita().getCódigoDePreço()) {
-            case normal:
+            switch (aluguel.getFita().getTipo()) {
+            case Normal:
                 valorCorrente += 2;
-                if (cada.getDiasAlugada() > 2) {
-                    valorCorrente += (cada.getDiasAlugada() - 2) * 1.5;
+                if (aluguel.getDiasAlugada() > 2) {
+                    valorCorrente += (aluguel.getDiasAlugada() - 2) * 1.5;
                 }
                 break;
-            case lancamento:
-                valorCorrente += cada.getDiasAlugada() * 3;
+            case Lancamento:
+                valorCorrente += aluguel.getDiasAlugada() * 3;
                 break;
-            case infantil:
+            case Infantil:
                 valorCorrente += 1.5;
-                if (cada.getDiasAlugada() > 3) {
-                    valorCorrente += (cada.getDiasAlugada() - 3) * 1.5;
+                if (aluguel.getDiasAlugada() > 3) {
+                    valorCorrente += (aluguel.getDiasAlugada() - 3) * 1.5;
                 }
                 break;
             } // switch
@@ -46,15 +52,15 @@ public class Cliente {
             pontosDeAlugadorFrequente++;
             // adiciona bonus para aluguel de um lançamento por pelo menos 2
             // dias
-            if (cada.getFita().getCódigoDePreço() == Fita.Tipo.lancamento
-                && cada.getDiasAlugada() > 1) {
+            if (aluguel.getFita().getTipo() == Fita.Tipo.Lancamento
+                && aluguel.getDiasAlugada() > 1) {
                 pontosDeAlugadorFrequente++;
             }
             // mostra valores para este aluguel
-            resultado += "\t" + cada.getFita().getTítulo() + "\t"
+            resultado += "\t" + aluguel.getFita().getTítulo() + "\t"
                          + valorCorrente + fimDeLinha;
             valorTotal += valorCorrente;
-        } // while
+        }//for
         // adiciona rodapé
         resultado += "Valor total devido: " + valorTotal + fimDeLinha;
         resultado += "Voce acumulou " + pontosDeAlugadorFrequente

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Aluguel {
     private Fita fita;
     private int diasAlugada;
-    private ArrayList<Aluguel> aluguel = new ArrayList<Aluguel>();
+    private ArrayList<Fita> fitas = new ArrayList<Fita>();
 
     public Aluguel(Fita fita, int diasAlugada) {
         this.fita = fita;
@@ -20,6 +20,9 @@ public class Aluguel {
     }
     public int getDiasAlugada() {
         return diasAlugada;
+    }
+    public void adicionaFita(Fita fita){
+        fitas.add(fita);
     }
 }
  

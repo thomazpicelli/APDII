@@ -29,5 +29,7 @@ public class VideoLocadoraTest {
         cliente.adicionaAluguel(aluguel1);
         cliente.adicionaAluguel(aluguel2);
         cliente.gerarExtrato();
+        
+        VideoLocadora videoLocadora = new VideoLocadora(cliente);
     }
 }

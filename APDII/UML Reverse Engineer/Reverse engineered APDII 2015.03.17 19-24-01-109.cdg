@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Reverse engineered APDII 2015.03.17 19-24-01-109">
+  <ClassDiagramComponents>
+    <Class xPosition="20.0" yPosition="20.0" package="Atv01" name="Aluguel" visibility="public">
+      <Constructors>
+        <Constructor name="Aluguel" visibility="public">
+          <Argument type="Fita" name="fita"/>
+          <Argument type="int" name="diasAlugada"/>
+        </Constructor>
+      </Constructors>
+      <Fields>
+        <Field name="fita" visibility="private" type="Fita"/>
+        <Field name="diasAlugada" visibility="private" type="int"/>
+        <Field name="fitas" visibility="private" type="ArrayList&lt;Fita&gt;"/>
+      </Fields>
+      <Methods>
+        <Method name="getFita" visibility="public" returnType="Fita"/>
+        <Method name="getDiasAlugada" visibility="public" returnType="int"/>
+        <Method name="adicionaFita" visibility="public" returnType="void">
+          <Argument type="Fita" name="fita"/>
+        </Method>
+        <Method name="gerarExtrato" visibility="public" returnType="void"/>
+        <Method name="ResultadoExtrato" visibility="public" returnType="String">
+          <Argument type="Aluguel" name="aluguel"/>
+          <Argument type="double" name="valorCorrente"/>
+          <Argument type="double" name="valorTotal"/>
+          <Argument type="int" name="pontosDeAlugadorFrequente"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class xPosition="320.0" yPosition="20.0" package="Atv01" name="Cliente" visibility="public">
+      <Constructors>
+        <Constructor name="Cliente" visibility="public">
+          <Argument type="String" name="nome"/>
+        </Constructor>
+      </Constructors>
+      <Fields>
+        <Field name="nome" visibility="private" type="String"/>
+        <Field name="fitasAlugadas" visibility="private" type="Collection&lt;Aluguel&gt;"/>
+      </Fields>
+      <Methods>
+        <Method name="getNome" visibility="public" returnType="String"/>
+        <Method name="adicionaAluguel" visibility="public" returnType="void">
+          <Argument type="Aluguel" name="aluguel"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class xPosition="620.0" yPosition="20.0" package="Atv01" name="Fita" visibility="public">
+      <Constructors>
+        <Constructor name="Fita" visibility="public">
+          <Argument type="String" name="tÃ­tulo"/>
+          <Argument type="Tipo" name="tipo"/>
+        </Constructor>
+      </Constructors>
+      <Fields>
+        <Field name="tÃ­tulo" visibility="private" type="String"/>
+        <Field name="tipo" visibility="private" type="Tipo"/>
+      </Fields>
+      <Methods>
+        <Method name="getTÃ­tulo" visibility="public" returnType="String"/>
+        <Method name="getTipo" visibility="public" returnType="Tipo"/>
+        <Method name="setTipo" visibility="public" returnType="void">
+          <Argument type="Tipo" name="tipo"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class xPosition="920.0" yPosition="20.0" package="Atv01" name="VideoLocadora" visibility="public">
+      <Constructors>
+        <Constructor name="VideoLocadora" visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+        </Constructor>
+      </Constructors>
+      <Fields>
+        <Field name="cliente" visibility="private" type="Cliente"/>
+      </Fields>
+      <Methods>
+        <Method name="getCliente" visibility="public" returnType="Cliente"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="fitas" source="Aluguel" target="Fita" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List"/>
+    <UseRelation source="VideoLocadora" target="Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Aluguel" target="Aluguel" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fitasAlugadas" source="Cliente" target="Aluguel" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Aluguel" target="Fita" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cliente" source="VideoLocadora" target="Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Cliente" target="Aluguel" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fita" source="Aluguel" target="Fita" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

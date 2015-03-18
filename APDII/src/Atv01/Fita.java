@@ -24,4 +24,13 @@ public class Fita {
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
+    
+    public int pontosFrequente(Aluguel aluguel){
+        int pontosDeAlugadorFrequente = 0;
+        pontosDeAlugadorFrequente++;
+        if (aluguel.getFita().getTipo() == Fita.Tipo.Lancamento && aluguel.getDiasAlugada() > 1){
+            pontosDeAlugadorFrequente++;
+        }
+        return pontosDeAlugadorFrequente;
+    }
 }

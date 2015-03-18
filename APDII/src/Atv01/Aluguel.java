@@ -25,7 +25,7 @@ public class Aluguel {
         fitas.add(fita);
     }    
      
-    public void gerarExtrato(Aluguel aluguel){
+    public double gerarExtrato(Aluguel aluguel){
         double valorCorrente = 0.0;
         int dias = aluguel.getDiasAlugada();
         switch (aluguel.getFita().getTipo()){
@@ -45,7 +45,17 @@ public class Aluguel {
                 }
                 break;
         } // switch
+        return valorCorrente;
     }
+    
+    public int pontosFrequente(Aluguel aluguel){
+        int pontosDeAlugadorFrequente = 0;
+        pontosDeAlugadorFrequente++;
+        if (aluguel.getFita().getTipo() == Fita.Tipo.Lancamento && aluguel.getDiasAlugada() > 1){
+            pontosDeAlugadorFrequente++;
+        }
+        return pontosDeAlugadorFrequente;
+    }    
     /*
     public void gerarExtrato() {
         double valorTotal = 0.0;

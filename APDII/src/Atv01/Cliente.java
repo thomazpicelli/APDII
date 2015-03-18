@@ -21,4 +21,6 @@ public class Cliente {
     public void adicionaAluguel(Aluguel aluguel) {
         fitasAlugadas.add(aluguel);
     }
+    
+    
 }
